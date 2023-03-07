@@ -5,8 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      #box {
+        display: flex;
+        justify-content: space-around;
+      }
+      #box > div {
+        height: 5em;
+        width: 5em;
+        background-color: purple;
+      }
+    </style>
   </head>
   <body>
     <h1>Let</h1>
+    <div id="box"></div>
+
+    <script type="text/javascript">
+      //**** EXAMPLE 1 ****//
+      var topic = "Javascript";
+      if (topic) {
+        var topic = "ECMAScript";
+        console.log("block", topic);
+      }
+      console.log("global", topic); // We actually overwrote the global topic, so this is ECMAScript now, too.
+
+      //**** EXAMPLE 2 ****//
+      var div;
+      var box = document.getElementById("box");
+
+      // Let's create 5 divs.
+      // If you use var for i here, the alert will always say box #5
+      for (let i = 0; i < 5; i++) {
+        div = document.createElement("div"); //create the div
+        // give it an onclick
+        div.onclick = function () {
+          alert("this is box #" + i);
+        };
+        // append it to dom
+        box.appendChild(div);
+      }
+    </script>
   </body>
 </html>
